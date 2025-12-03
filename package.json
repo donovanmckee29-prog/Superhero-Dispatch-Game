@@ -1,7 +1,8 @@
 {
-  "name": "superhero-dispatch-game",
+  "name": "neon-dispatch",
   "version": "1.0.0",
-  "description": "Complete Dispatch Game Clone with 100+ Heroes and 10 Episodes",
+  "description": "Authentic Dispatch (2025) clone - Superhero dispatch simulator with stat-based mission system",
+  "type": "module",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
@@ -10,7 +11,8 @@
   "dependencies": {
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "lucide-react": "^0.294.0"
+    "framer-motion": "^10.16.16",
+    "zustand": "^4.4.7"
   },
   "devDependencies": {
     "@vitejs/plugin-react": "^4.2.1",

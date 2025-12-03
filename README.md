@@ -1,220 +1,116 @@
-# 🦸 Superhero Dispatch Game
+# ⚡ Neon Dispatch
 
-A complete, production-ready React-based dispatching game inspired by "Dispatch" with massive expansions. Manage a team of heroes, dispatch them to missions, and progress through 10 unique episodes.
+An authentic recreation of **Dispatch (2025)** by AdHoc Studio - A superhero dispatch simulator with stat-based mission system.
 
-![Game Screenshot](https://via.placeholder.com/800x400/1e293b/4fd1c7?text=Superhero+Dispatch+Game)
+## 🎮 Game Overview
 
-## 🎮 Features
+Neon Dispatch is a web-based superhero dispatch simulator that recreates the core gameplay mechanics of Dispatch:
 
-### Core Gameplay
-- **100+ Unique Heroes** across 7 classes (Brawler, Speedster, Tank, Diplomat, Genius, Elemental, Mystic)
-- **5 Hero Stats**: Combat, Vigor, Mobility, Charisma, Intellect (max 15 per stat)
-- **Mission System**: Random missions spawn with 1-4 hero slots, cryptic requirements, and time limits
-- **10 Episode Campaign**: Progressive difficulty with unique storylines and hero unlocks
-- **Team Selection**: Choose from preset teams or build your custom team of 6 heroes
+- **Receive emergency calls** with time pressure
+- **Read mission briefings** with keyword hints
+- **Select heroes** based on stat requirements
+- **Dispatch teams** (1-3 heroes depending on mission)
+- **Track mission progress** in real-time
+- **Review outcomes** and manage hero recovery
+- **Level up heroes** and allocate skill points
 
-### Hero System
-- **Stat Progression**: Heroes start weak (1-5 per stat) and can be upgraded to max 15
-- **XP & Leveling**: Heroes gain XP from missions and level up to earn skill points
-- **Fatigue System**: Heroes need rest after missions
-- **Relationship System**: Heroes have friends (synergy bonuses) and enemies (sabotage penalties)
-- **4 Hero States**: Available, Busy, Returning, Resting
+## 🦸 Hero System
 
-### Mission System
-- **3 Mission Types**: Regular, Hacking (grid-based minigame), Conflict (choose between options)
-- **Cryptic Requirements**: No explicit stat numbers - players must deduce from keywords
-- **Dynamic Difficulty**: Missions scale from 1-8 stats (episodes 1-3) up to 15 (later episodes)
-- **Time Pressure**: Missions have countdown timers (15-45 seconds)
-- **Visual Mission Map**: City map with clickable mission markers
+### The Five-Stat System
 
-### UI/UX
-- **Dark Cyberpunk Theme**: Neon accents, grid patterns, futuristic aesthetic
-- **Pentagon Radar Charts**: Visual stat representation with clear boundaries
-- **Character Portraits**: Class-based color coding and visual indicators
-- **Smooth Animations**: Polished transitions and feedback
-- **Responsive Design**: Works on desktop and laptop screens
+1. **COMBAT** ⚔️ - Fighting, brawls, physical confrontations
+2. **VIGOR** 🛡️ - Durability, stamina, surviving harsh conditions
+3. **MOBILITY** ⚡ - Speed, agility, rapid response
+4. **CHARISMA** 💬 - Negotiation, persuasion, crowd control
+5. **INTELLECT** 🧠 - Hacking, investigations, problem-solving
 
-## 🚀 Quick Start
+### Unique Hero Powers
 
-### Prerequisites
-- Node.js 16+ and npm
+- **Invisigal** - Works best alone, faster travel time solo
+- **Flambae** - Hot Streak: +1 Combat/Mobility after success, resets on failure
+- **Prism** - Duplicator: Creates copies of adjacent heroes with half stats
+- **Sonar** - Transformer: Stats flip after each mission (Intellect↔Combat, Charisma↔Vigor)
+- **Coupé** - Assassin: +1 Combat in first slot, +1 Mobility in second slot
+- **Punch Up** - Tank: Immune to injuries, cannot be downed
+- **Malevola** - Healer: Can heal teammates, gains stacking bonuses
+- **Golem** - Slot-Dependent Tank: Positioning grants stat bonuses
+
+## 🎯 Mission System
+
+### Call Types
+
+- **Standard Calls** - Single objective, 1-3 hero slots
+- **Urgent Calls** - Higher stakes, faster countdown
+- **Conflicting Calls** - Two missions appear together, pick one
+- **Hacking Calls** - No heroes dispatched, solve puzzle directly
+
+### Success Calculation
+
+Missions are scored by comparing hero stat profiles to hidden requirement profiles. Success is calculated based on stat overlap with a ±10% random factor.
+
+## 🚀 Getting Started
 
 ### Installation
 
-1. **Clone the repository**
-   ```bash
-   git clone https://github.com/YOUR_USERNAME/superhero-dispatch-game.git
-   cd superhero-dispatch-game
-   ```
+```bash
+npm install
+```
 
-2. **Install dependencies**
-   ```bash
-   npm install
-   ```
+### Development
 
-3. **Start development server**
-   ```bash
-   npm run dev
-   ```
+```bash
+npm run dev
+```
 
-4. **Open in browser**
-   - Navigate to `http://localhost:3000` (or the port shown in terminal)
-   - The game should open automatically
+The game will open at `http://localhost:3000`
 
-### Build for Production
+### Build
 
 ```bash
 npm run build
-npm run preview
 ```
 
-## 📁 Project Structure
+## 🎨 Design
 
-```
-superhero-dispatch-game/
-├── src/
-│   ├── App.jsx          # Main game component with all logic
-│   ├── main.jsx        # React entry point
-│   └── index.css       # Tailwind CSS and custom styles
-├── index-react.html    # HTML entry point
-├── package.json        # Dependencies and scripts
-├── vite.config.js      # Vite configuration
-├── tailwind.config.js  # Tailwind CSS configuration
-└── README.md           # This file
-```
+- **Neon cyberpunk aesthetic** - Teal/cyan primary, orange urgency, purple tech
+- **Geometric UI** - Clean lines, grid-based layout
+- **High contrast** - Dark navy backgrounds with bright neon accents
+- **Smooth animations** - 60fps, professional polish
 
-## 🎯 How to Play
+## 📋 Features
 
-### Starting a Game
-1. Click **"New Game"** on the start screen
-2. Select a **Preset Team** or build a **Custom Team** (6 heroes)
-3. Read the **Episode Intro** and click "Start Episode"
+✅ Call spawning with countdown timers  
+✅ Hero state machine (Available/Busy/Returning/Resting/Injured/Downed)  
+✅ Stat-based success calculation  
+✅ Multi-hero stat combining  
+✅ XP and leveling system  
+✅ Skill point allocation  
+✅ Rest/cooldown timers  
+✅ Review requirement before hero reuse  
+✅ Unique hero powers  
+✅ Mission types (Standard, Urgent, Conflicting)  
+✅ Real-time mission progress  
+✅ Performance tracking  
+✅ Dispatcher rank system  
 
-### Gameplay Loop
-1. **Missions appear** on the city map as blue circular markers
-2. **Click a mission** to pause time and view details
-3. **Select heroes** from the bottom roster (1-4 heroes based on mission slots)
-4. **Click DISPATCH** to send heroes on the mission
-5. **Wait 5-10 seconds** for mission completion
-6. **View results** - success/failure, XP gained, hero comments
-7. **Continue** dispatching missions until episode timer reaches 0:00
+## 🎮 Controls
 
-### Hero Management
-- **Click any hero** in the roster to view/upgrade stats
-- **Add skill points** to increase stats (max 15 per stat)
-- **Monitor hero status**: Available, Busy, Returning, Resting
-- **Watch relationships**: Friends work better together, enemies sabotage
+- **Mouse** - Click to interact with calls and heroes
+- **Keyboard** - Tab navigation, Enter/Space to activate, Escape to close modals
 
-### Mission Strategy
-- **Read cryptic requirements** - keywords hint at needed stats
-- **Match hero classes** to mission types:
-  - Combat/Defense → Brawlers, Tanks
-  - Pursuit/Stealth → Speedsters
-  - Investigation/Negotiation → Genius, Diplomat
-  - Rescue/Disaster → Balanced teams
-- **Consider relationships** - pair friends, avoid enemies
-- **Manage fatigue** - rest heroes between missions
+## 🔧 Technology Stack
 
-## 🎨 Game Mechanics
+- **React 18** - Component architecture
+- **Zustand** - State management
+- **Framer Motion** - Animations
+- **Tailwind CSS** - Styling
+- **Vite** - Build tool
 
-### Hero Stats
-- **Combat**: Physical fighting ability
-- **Vigor**: Health and endurance
-- **Mobility**: Speed and agility
-- **Charisma**: Social and negotiation skills
-- **Intellect**: Problem-solving and analysis
+## 📝 License
 
-### Mission Requirements
-Missions have hidden stat requirements that scale with:
-- **Episode number** (1-3: 1-8 stats, 4+: up to 15)
-- **Number of slots** (1 slot = lower reqs, 4 slots = higher reqs)
-- **Mission type** (Combat missions need Combat/Vigor, etc.)
+This is a fan recreation for educational purposes.
 
-### Success Calculation
-Mission success is calculated based on:
-- Hero stats vs. mission requirements
-- Synergy bonuses (friends paired together)
-- Sabotage penalties (enemies paired together)
-- Hero fatigue levels
-- Class bonuses (Genius heroes get bonus)
+## 🙏 Credits
 
-### Progression
-- **Episodes**: 10 unique episodes with increasing difficulty
-- **Hero Unlocks**: 8-12 new heroes unlock per episode
-- **XP & Leveling**: Heroes gain XP and level up
-- **Skill Points**: Earned on level up, used to upgrade stats
-- **Achievements**: Track successful missions, rank progression
+Based on **Dispatch (2025)** by AdHoc Studio.
 
-## 🛠️ Technology Stack
-
-- **React 18** - UI framework
-- **Vite** - Build tool and dev server
-- **Tailwind CSS** - Utility-first styling
-- **Lucide React** - Icon library
-- **No external APIs** - Fully self-contained
-- **No localStorage** - All state managed in React
-
-## 📝 Development
-
-### Key Components
-- `App.jsx`: Main game component with all logic
-  - `gameReducer`: Centralized state management
-  - `generateHeroes()`: Creates 100+ heroes with varied stats
-  - `generateMission()`: Creates missions with scaling difficulty
-  - `calculateSuccess()`: Mission success probability
-  - Screen components: Start, TeamSelect, EpisodeIntro, Game, MissionDetail, HeroUpgrade, MissionComplete, EpisodeComplete, FinalResults
-
-### State Management
-- Uses `useReducer` for complex game state
-- `useRef` for performance optimization (mission spawning)
-- `useMemo` and `useCallback` for expensive calculations
-
-### Performance Optimizations
-- Memoized hero filtering
-- Optimized game loop (1 second intervals)
-- Efficient mission spawning (8-12 second intervals)
-- Reduced re-renders with proper React hooks
-
-## 🎮 Game Screens
-
-1. **Start Screen**: Welcome screen with "New Game" button
-2. **Team Selection**: Choose preset or custom team (6 heroes)
-3. **Episode Intro**: Storyline and episode information
-4. **Main Game**: City map with missions and hero roster
-5. **Mission Detail**: Three-panel layout (Investigation, Details, Requirements)
-6. **Hero Upgrade**: View stats, allocate skill points, see radar chart
-7. **Mission Complete**: Performance results and hero comments
-8. **Episode Complete**: Stats, unlocks, and progression
-9. **Final Results**: Overall performance after 10 episodes
-
-## 🐛 Known Issues
-
-- None currently - game is production-ready!
-
-## 🔮 Future Enhancements
-
-Potential features for future versions:
-- Save/Load game state
-- More mission types
-- Hero equipment system
-- Multiplayer support
-- Leaderboards
-- More hero classes and abilities
-
-## 📄 License
-
-This project is open source and available for personal and educational use.
-
-## 👤 Author
-
-Created as a complete Dispatch game clone with expanded features.
-
-## 🙏 Acknowledgments
-
-- Inspired by the original "Dispatch" game
-- Built with React, Vite, and Tailwind CSS
-- Icons from Lucide React
-
----
-
-**Enjoy dispatching heroes and saving the city! 🦸‍♂️🦸‍♀️**
