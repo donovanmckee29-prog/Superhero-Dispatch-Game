@@ -269,7 +269,19 @@ export const useGameStore = create((set, get) => ({
   dispatchHeroes: (callId, heroIds) => {
     const state = get()
     const call = state.calls.find(c => c.id === callId)
-    if (!call) return
+    if (!call || !heroIds || heroIds.length === 0) {
+      console.warn('Cannot dispatch: invalid call or no heroes selected')
+      return
+    }
+    
+    // Verify all heroes are available
+    const selectedHeroes = state.heroes.filter(h => heroIds.includes(h.id))
+    const unavailable = selectedHeroes.filter(h => h.status !== HERO_STATUS.AVAILABLE)
+    
+    if (unavailable.length > 0) {
+      console.warn('Cannot dispatch: some heroes are not available', unavailable)
+      return
+    }
     
     // Update heroes to BUSY
     heroIds.forEach(heroId => {
@@ -279,12 +291,15 @@ export const useGameStore = create((set, get) => ({
       })
     })
     
-    // Update call
+    // Update call with assignedAt timestamp
+    const assignedAt = Date.now()
     state.updateCall(callId, {
       status: 'in-progress',
       assignedHeroes: heroIds,
-      assignedAt: Date.now()
+      assignedAt: assignedAt
     })
+    
+    console.log('Dispatched heroes:', heroIds, 'to call:', callId, 'at:', assignedAt)
   },
   
   // Mission completion

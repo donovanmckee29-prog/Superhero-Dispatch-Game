@@ -157,9 +157,29 @@ const CityMap = ({ calls, onMissionClick, selectedMission }) => {
 
 const CallMarker = ({ call, onClick, isSelected }) => {
   const [hovered, setHovered] = React.useState(false)
+  const [missionProgress, setMissionProgress] = React.useState(0)
   const audioSystem = getAudioSystem()
+  
+  // Update mission progress in real-time
+  React.useEffect(() => {
+    if (call.status === 'in-progress' && call.assignedAt) {
+      const updateProgress = () => {
+        const missionDuration = 20000 // 20 seconds
+        const elapsed = Date.now() - call.assignedAt
+        const progress = Math.min(100, (elapsed / missionDuration) * 100)
+        setMissionProgress(progress)
+      }
+      
+      updateProgress()
+      const interval = setInterval(updateProgress, 100)
+      return () => clearInterval(interval)
+    } else {
+      setMissionProgress(0)
+    }
+  }, [call.status, call.assignedAt])
 
   const getColor = () => {
+    if (call.status === 'in-progress') return '#4A90E2' // Blue for in-progress
     if (call.type === 'conflicting') return '#FF69B4'
     if (call.type === 'urgent') return '#FF8C00'
     if (call.type === 'hacking') return '#9F7AEA'
@@ -249,7 +269,7 @@ const CallMarker = ({ call, onClick, isSelected }) => {
         {getIcon()}
       </div>
 
-      {/* Timer */}
+      {/* Timer or Progress */}
       <div
         style={{
           position: 'absolute',
@@ -261,10 +281,41 @@ const CallMarker = ({ call, onClick, isSelected }) => {
           color: color,
           textShadow: `0 0 5px ${color}`,
           fontWeight: 'bold',
-          whiteSpace: 'nowrap'
+          whiteSpace: 'nowrap',
+          display: 'flex',
+          flexDirection: 'column',
+          alignItems: 'center',
+          gap: '4px'
         }}
       >
-        {seconds}s
+        {call.status === 'in-progress' ? (
+          <>
+            <div>IN PROGRESS</div>
+            <div
+              style={{
+                width: '60px',
+                height: '4px',
+                background: 'rgba(0, 0, 0, 0.5)',
+                borderRadius: '2px',
+                overflow: 'hidden'
+              }}
+            >
+              <motion.div
+                style={{
+                  width: `${missionProgress}%`,
+                  height: '100%',
+                  background: color,
+                  boxShadow: `0 0 10px ${color}`
+                }}
+                initial={{ width: 0 }}
+                animate={{ width: `${missionProgress}%` }}
+                transition={{ duration: 0.3 }}
+              />
+            </div>
+          </>
+        ) : (
+          <div>{seconds}s</div>
+        )}
       </div>
 
       {/* Tooltip */}

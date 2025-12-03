@@ -124,31 +124,37 @@ function App() {
   // Mission progress simulation
   useEffect(() => {
     const progressInterval = setInterval(() => {
-      calls.forEach(call => {
-        if (call.status === 'in-progress' && call.assignedHeroes) {
+      const currentCalls = useGameStore.getState().calls
+      const currentHeroes = useGameStore.getState().heroes
+      
+      currentCalls.forEach(call => {
+        if (call.status === 'in-progress' && call.assignedHeroes && call.assignedHeroes.length > 0) {
           const assignedAt = call.assignedAt || Date.now()
-          const missionDuration = 15000 // 15 seconds
+          const missionDuration = 20000 // 20 seconds
           const elapsed = Date.now() - assignedAt
           
           if (elapsed >= missionDuration) {
             // Mission complete - calculate success
-            const assignedHeroes = heroes.filter(h => call.assignedHeroes.includes(h.id))
-            const result = calculateMissionSuccess(assignedHeroes, call.requiredStats, call)
+            const assignedHeroes = currentHeroes.filter(h => call.assignedHeroes.includes(h.id))
             
-            completeMission(call.id, result.success, result.success ? call.xpReward : 0)
-            
-            if (result.success) {
-              audioSystem.playSuccess()
-            } else {
-              audioSystem.playFailure()
+            if (assignedHeroes.length > 0) {
+              const result = calculateMissionSuccess(assignedHeroes, call.requiredStats, call)
+              
+              completeMission(call.id, result.success, result.success ? call.xpReward : 0)
+              
+              if (result.success) {
+                audioSystem.playSuccess()
+              } else {
+                audioSystem.playFailure()
+              }
             }
           }
         }
       })
-    }, 500)
+    }, 100) // Check more frequently
     
     return () => clearInterval(progressInterval)
-  }, [calls, heroes, completeMission])
+  }, [completeMission])
   
   // Handle conflicting calls
   const handleCallClick = (call) => {
@@ -244,6 +250,12 @@ function App() {
           call={hackingCall}
           onSuccess={handleHackingSuccess}
           onFailure={handleHackingFailure}
+          onCancel={() => {
+            setHackingCall(null)
+            // Mark call as missed
+            useGameStore.getState().shiftStats.missed++
+            removeCall(hackingCall.id)
+          }}
         />
       )}
     </div>

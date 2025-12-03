@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { getAudioSystem } from '../utils/audioSystem'
 
-const HackingMinigame = ({ call, onSuccess, onFailure }) => {
+const HackingMinigame = ({ call, onSuccess, onFailure, onCancel }) => {
   const [grid, setGrid] = useState([])
   const [playerPos, setPlayerPos] = useState({ x: 0, y: 0 })
   const [targetPos, setTargetPos] = useState({ x: 0, y: 0 })
@@ -124,12 +124,18 @@ const HackingMinigame = ({ call, onSuccess, onFailure }) => {
           e.preventDefault()
           handleMove(1, 0)
           break
+        case 'Escape':
+          e.preventDefault()
+          if (onCancel) {
+            onCancel()
+          }
+          break
       }
     }
 
     window.addEventListener('keydown', handleKeyPress)
     return () => window.removeEventListener('keydown', handleKeyPress)
-  }, [playerPos, movesRemaining, gameOver, grid])
+  }, [playerPos, movesRemaining, gameOver, grid, onCancel])
 
   const getCellColor = (cell, x, y) => {
     if (cell === 'player') return '#00D9FF'
@@ -230,11 +236,35 @@ const HackingMinigame = ({ call, onSuccess, onFailure }) => {
             fontSize: '12px',
             color: '#888',
             textAlign: 'center',
-            marginTop: '20px'
+            marginTop: '20px',
+            marginBottom: '16px'
           }}
         >
           Use WASD or Arrow Keys to navigate. Avoid red ICE nodes. Reach the green target.
         </div>
+
+        {/* Exit button */}
+        {!gameOver && onCancel && (
+          <motion.button
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+            onClick={onCancel}
+            style={{
+              width: '100%',
+              padding: '10px',
+              background: 'rgba(255, 255, 255, 0.1)',
+              border: '2px solid #888',
+              borderRadius: '8px',
+              color: '#ccc',
+              fontSize: '14px',
+              fontWeight: 'bold',
+              cursor: 'pointer',
+              marginBottom: '12px'
+            }}
+          >
+            CANCEL (ESC)
+          </motion.button>
+        )}
 
         {gameOver && (
           <motion.div
