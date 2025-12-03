@@ -1,0 +1,65 @@
+═══════════════════════════════════════════════════════════════
+  HOW TO OPEN IN GOOGLE CHROME (STEP BY STEP)
+═══════════════════════════════════════════════════════════════
+
+METHOD 1: Use START_HERE.html (EASIEST!)
+─────────────────────────────────────────
+1. Find the file: START_HERE.html
+2. Double-click it
+3. Click the "START GAME" button
+4. Done!
+
+METHOD 2: Direct Open
+──────────────────────
+1. Open Google Chrome
+2. Press: Ctrl+O (Windows) or Cmd+O (Mac)
+3. Navigate to: /Users/donovan.mckee29/superhero-dispatch-game/
+4. Select: index.html
+5. Click "Open"
+
+METHOD 3: Drag & Drop
+──────────────────────
+1. Open Google Chrome
+2. Open Finder (Mac) or File Explorer (Windows)
+3. Navigate to: /Users/donovan.mckee29/superhero-dispatch-game/
+4. Drag index.html into Chrome window
+5. Drop it!
+
+METHOD 4: Right-Click
+──────────────────────
+1. Find index.html in the folder
+2. Right-click on it
+3. Select "Open With"
+4. Choose "Google Chrome"
+5. Click
+
+═══════════════════════════════════════════════════════════════
+
+❌ DO NOT OPEN:
+────────────────
+- Any .apk files
+- characters.js (by itself)
+- game.js (by itself)
+- styles.css (by itself)
+
+✅ DO OPEN:
+───────────
+- index.html (the main game)
+- START_HERE.html (launcher page)
+
+═══════════════════════════════════════════════════════════════
+
+IF STILL NOT WORKING:
+─────────────────────
+1. Make sure you're opening index.html (not .apk)
+2. Check all files are in same folder:
+   - index.html
+   - characters.js
+   - game.js
+   - styles.css
+3. Try opening START_HERE.html first
+4. Check Chrome console (F12) for errors
+
+═══════════════════════════════════════════════════════════════
+
+

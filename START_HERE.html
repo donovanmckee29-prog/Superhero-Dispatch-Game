@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>START HERE - Superhero Dispatch Game</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            background: white;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.3);
+            text-align: center;
+            max-width: 600px;
+        }
+        h1 {
+            color: #667eea;
+            margin-bottom: 20px;
+        }
+        .warning {
+            background: #fff3cd;
+            border: 2px solid #ffc107;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+        .button {
+            display: inline-block;
+            background: #4fd1c7;
+            color: white;
+            padding: 15px 30px;
+            text-decoration: none;
+            border-radius: 8px;
+            font-size: 18px;
+            font-weight: bold;
+            margin: 10px;
+            transition: transform 0.2s;
+        }
+        .button:hover {
+            transform: translateY(-2px);
+            background: #38b2ac;
+        }
+        .instructions {
+            text-align: left;
+            background: #f7fafc;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+        .instructions ol {
+            margin: 10px 0;
+            padding-left: 20px;
+        }
+        .instructions li {
+            margin: 8px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🦸 Superhero Dispatch Game</h1>
+        <p style="font-size: 18px; color: #666;">Welcome! Click the button below to start playing.</p>
+        
+        <div class="warning">
+            <strong>⚠️ IMPORTANT:</strong><br>
+            Do NOT open .apk files!<br>
+            This is a web game - open the HTML file below.
+        </div>
+        
+        <a href="index.html" class="button">🚀 START GAME</a>
+        
+        <div class="instructions">
+            <h3>How to Open:</h3>
+            <ol>
+                <li><strong>Click the "START GAME" button above</strong> (easiest way)</li>
+                <li>OR find the file named <code>index.html</code> in this folder</li>
+                <li>OR right-click <code>index.html</code> → Open With → Google Chrome</li>
+            </ol>
+            
+            <h3>What You Should See:</h3>
+            <ul>
+                <li>Header: "🦸 Superhero Dispatch Center"</li>
+                <li>Credits: 1000 and Reputation: 100</li>
+                <li>Mission board with missions</li>
+                <li>Team selection buttons</li>
+            </ul>
+            
+            <h3>If It Doesn't Work:</h3>
+            <ul>
+                <li>Make sure all files are in the same folder</li>
+                <li>Check browser console (Press F12)</li>
+                <li>Try a different browser (Firefox, Safari, Edge)</li>
+            </ul>
+        </div>
+    </div>
+</body>
+</html>
+
+
